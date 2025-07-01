@@ -1,5 +1,7 @@
 # 🎲 Dice Game – React + Vite
 
+🔗 **Live Demo:** [https://simple-react-game.vercel.app](https://simple-react-game.vercel.app)
+
 This is a simple interactive Dice Game built using **React** and **Vite**. The goal is to freeze dice with the same number and keep rolling the rest until all dice show the same value. A great beginner-friendly project to practice **state management**, **component optimization**, and **responsive UI design** in React.
 
 ---
@@ -82,6 +84,13 @@ npm run dev
 Visit [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
+
+## 🌍 Deployment
+
+This project is hosted on [Vercel](https://vercel.com), a frontend cloud platform optimized for React and Vite applications.
+
+🔗 **Live Site:** [https://simple-react-game.vercel.app](https://simple-react-game.vercel.app)
+
 
 ## ✅ How to Play
 
