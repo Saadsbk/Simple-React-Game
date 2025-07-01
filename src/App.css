@@ -1,0 +1,125 @@
+/* App.css */
+
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #eef2f3, #d9e2ec);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    background: rgb(0, 0, 58);
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+header > h1 {
+    color: aliceblue;
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+/* Prompt section */
+.prompt {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Main Container */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.co {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 900px;
+}
+
+/* Dice Container: 2 rows x 5 columns */
+.die-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.2rem;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Die Buttons */
+.die-container > button {
+    font-size: 2rem;
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.die-container > button:hover {
+    transform: scale(1.1);
+}
+
+/* Button States */
+.button-pressed {
+    background-color: #555;
+    color: white;
+}
+
+.button-not-pressed {
+    background-color: #e0f7ff;
+    color: #222;
+}
+
+/* Win Message */
+.msg-container {
+    text-align: center;
+    font-size: 1.3rem;
+    color: green;
+}
+
+/* Roll Button Styling */
+.roll-die-container > button {
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(0, 0, 58);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.roll-die-container > button:hover {
+    background-color: rgb(20, 20, 80);
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .die-container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+    }
+
+    header > h1 {
+      font-size: 2.2rem;
+    }
+}
