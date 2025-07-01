@@ -65,7 +65,7 @@ npm install
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/dice-game.git
+git clone https://github.com/Saadsbk/Simple-React-Game.git
 cd dice-game
 ```
 
