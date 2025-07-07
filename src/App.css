@@ -1,125 +1,453 @@
 /* App.css */
 
-/* General Reset */
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* CSS Custom Properties for consistent theming */
+:root {
+    --primary-color: #1a1a3e;
+    --primary-light: #2d2d5f;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-color: #4facfe;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --border-radius: 16px;
+    --border-radius-lg: 24px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(145deg, #eef2f3, #d9e2ec);
+    font-family: var(--font-family);
+    background: var(--background-gradient);
     min-height: 100vh;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
 }
 
-/* Header Styles */
+/* Enhanced Header */
 header {
     text-align: center;
-    background: rgb(0, 0, 58);
-    padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: var(--primary-gradient);
+    padding: clamp(1rem, 4vw, 2rem) 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 header > h1 {
-    color: aliceblue;
-    font-size: 3.5rem;
+    color: white;
+    font-size: clamp(2rem, 6vw, 4rem);
     margin: 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
 }
 
-/* Prompt section */
+/* Enhanced Prompt Section */
 .prompt {
     text-align: center;
-    font-size: 1.2rem;
-    padding: 1rem;
-    margin-top: 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    padding: clamp(1rem, 3vw, 2rem);
+    margin: 0 auto;
+    max-width: 600px;
+    color: #555;
+    font-weight: 400;
 }
 
 /* Main Container */
 main {
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: clamp(1rem, 3vw, 2rem);
+    min-height: calc(100vh - 200px);
+    align-items: flex-start;
 }
 
+/* Enhanced Game Container */
 .co {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-    border-radius: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    background-color: white;
-    gap: 1.5rem;
-    width: 90%;
-    max-width: 900px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--card-shadow);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    gap: clamp(1rem, 3vw, 2rem);
+    width: min(95%, 900px);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Dice Container: 2 rows x 5 columns */
+.co:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Die Container */
 .die-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 1.2rem;
+    gap: clamp(0.8rem, 2vw, 1.5rem);
     width: 100%;
     justify-items: center;
     align-items: center;
+    padding: clamp(0.5rem, 2vw, 1rem);
 }
 
-/* Die Buttons */
+/* Enhanced Die Buttons */
 .die-container > button {
-    font-size: 2rem;
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 12px;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    width: clamp(50px, 8vw, 80px);
+    height: clamp(50px, 8vw, 80px);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-family: var(--font-family);
+    position: relative;
+    overflow: hidden;
+}
+
+.die-container > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: var(--transition);
+}
+
+.die-container > button:hover::before {
+    left: 100%;
 }
 
 .die-container > button:hover {
-    transform: scale(1.1);
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.die-container > button:active {
+    transform: scale(0.95);
 }
 
 /* Button States */
 .button-pressed {
-    background-color: #555;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    border-color: var(--primary-light);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.button-pressed:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
 
 .button-not-pressed {
-    background-color: #e0f7ff;
-    color: #222;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    color: var(--primary-color);
+    border-color: #e2e8f0;
 }
 
-/* Win Message */
+.button-not-pressed:hover {
+    background: linear-gradient(135deg, #2c5781 0%, #8a91ee 100%);
+    border-color: var(--secondary-color);
+}
+
+/* Enhanced Message Container */
 .msg-container {
     text-align: center;
-    font-size: 1.3rem;
-    color: green;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--success-color);
+    font-weight: 600;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Roll Button Styling */
+.msg-container p {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    animation: celebrateWin 0.6s ease-out;
+}
+
+@keyframes celebrateWin {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(-90deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Enhanced Roll Button */
 .roll-die-container > button {
-    padding: 0.8rem 2rem;
-    font-size: 1.2rem;
+    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
     border: none;
-    border-radius: 8px;
-    background-color: rgb(0, 0, 58);
+    border-radius: var(--border-radius);
+    background: var(--primary-gradient);
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
+    font-weight: 600;
+    font-family: var(--font-family);
+    box-shadow: 0 6px 20px rgba(26, 26, 62, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.roll-die-container > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.roll-die-container > button:hover::before {
+    left: 100%;
 }
 
 .roll-die-container > button:hover {
-    background-color: rgb(20, 20, 80);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(26, 26, 62, 0.4);
 }
 
-/* Responsive layout */
+.roll-die-container > button:active {
+    transform: translateY(0);
+}
+
+.roll-die-container > button:disabled {
+    background: linear-gradient(135deg, #9ca3af, #6b7280);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Comprehensive Media Queries */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .co {
+        padding: 4rem;
+    }
+    
+    .die-container {
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Medium Desktop */
+@media (max-width: 1024px) {
+    .die-container > button {
+        width: clamp(60px, 7vw, 70px);
+        height: clamp(60px, 7vw, 70px);
+        font-size: clamp(1.4rem, 2.8vw, 2rem);
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .die-container {
+        grid-template-columns: repeat(5, 1fr);
+        gap: clamp(0.5rem, 2vw, 1rem);
+    }
+    
+    .co {
+        padding: clamp(1rem, 3vw, 2rem);
+        width: 95%;
+    }
+    
+    .prompt {
+        padding: 1rem;
+        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    }
+}
+
+/* Large Mobile */
 @media (max-width: 600px) {
     .die-container {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: clamp(0.6rem, 3vw, 1rem);
     }
+    
+    .die-container > button {
+        width: clamp(45px, 12vw, 60px);
+        height: clamp(45px, 12vw, 60px);
+        font-size: clamp(1rem, 4vw, 1.6rem);
+    }
+    
+    header {
+        padding: 1rem 0;
+    }
+    
+    .co {
+        gap: 1.5rem;
+        margin: 0.5rem;
+    }
+}
 
+/* Small Mobile */
+@media (max-width: 480px) {
+    .die-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: clamp(0.5rem, 4vw, 0.8rem);
+    }
+    
+    .die-container > button {
+        width: clamp(40px, 15vw, 55px);
+        height: clamp(40px, 15vw, 55px);
+        font-size: clamp(0.9rem, 5vw, 1.4rem);
+    }
+    
+    .roll-die-container > button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .msg-container {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
+    .die-container > button {
+        width: clamp(35px, 18vw, 45px);
+        height: clamp(35px, 18vw, 45px);
+        font-size: clamp(0.8rem, 6vw, 1.2rem);
+    }
+    
+    .co {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
     header > h1 {
-      font-size: 2.2rem;
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .die-container > button,
+    .roll-die-container > button {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .die-container {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    
+    .co {
+        padding: 1rem 2rem;
+    }
+    
+    header > h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    body {
+        background: var(--background-gradient);
+        color: #e2e8f0;
+    }
+    
+    .co {
+        background: rgba(30, 41, 59, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .button-not-pressed {
+        background: linear-gradient(135deg, #334155 0%, #475569 100%);
+        color: #e2e8f0;
+        border-color: #475569;
+    }
+    
+    .prompt {
+        color: #cbd5e1;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .die-container > button:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .button-pressed {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    
+    .button-not-pressed {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
     }
 }
